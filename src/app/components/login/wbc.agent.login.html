@@ -1,0 +1,26 @@
+﻿<div class="container admin-loginform">
+    <div class="loginlogo">
+        <img src="../../../assets/images/logo.png" alt="Logo" />
+    </div>
+    <div class="row admin-login">
+        <form role="form" name="login" novalidate>
+            <div class="form-group">
+                <div class="input-group">
+                    <input type="text" class="form-control" id="uLogin" placeholder="Username *" data-ng-model="vm.username" required />
+                    <label for="uLogin" class="input-group-addon glyphicon glyphicon-user"></label>
+                </div>
+            </div> <!-- /.form-group -->
+
+            <div class="form-group">
+                <div class="input-group">
+                    <input type="password" class="form-control" id="uPassword" placeholder="Password *" data-ng-model="vm.password" required />
+                    <label for="uPassword" class="input-group-addon glyphicon glyphicon-lock"></label>
+                </div> <!-- /.input-group -->
+            </div> <!-- /.form-group -->
+
+            <div class="form-group text-center">
+                <button data-ng-click="vm.auth(login.$invalid)" data-ng-disabled="login.$invalid" type="submit" class="btn btn-success">Login</button>
+            </div>
+        </form>
+    </div>
+</div>

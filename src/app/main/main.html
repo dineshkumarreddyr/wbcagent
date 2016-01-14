@@ -1,0 +1,111 @@
+<app-header></app-header>
+
+<div class="container-fluid bookwrapper">
+    <div class="container bookwrap">
+        <h2>Book a Space</h2>
+        <form class="row form-horizontal" name="bookroom" novalidate>
+            <fieldset>
+                <div class="control-group col-md-6">
+                    <label class="control-label" for="username">Customer Name</label>
+                    <div class="controls">
+                        <input type="text" id="customername" name="customername" placeholder="" class="form-control" data-ng-model="vm.name" />
+                    </div>
+                </div>
+
+                <div class="control-group col-md-6">
+                    <label class="control-label" for="email">Customer E-mail</label>
+                    <div class="controls">
+                        <input type="text" id="customeremail" name="customeremail" placeholder="" class="form-control" data-ng-model="vm.email" />
+                    </div>
+                </div>
+
+                <div class="control-group col-md-6">
+                    <label class="control-label" for="mobile">Mobile Number</label>
+                    <div class="controls">
+                        <input type="text" id="mobile" name="mobile" allowonlynumbers placeholder="" data-ng-model="vm.mobile" class="form-control">
+                    </div>
+                </div>
+
+                <div class="control-group col-md-6">
+                    <label class="control-label" for="email">Organization</label>
+                    <div class="controls">
+                        <input type="text" id="Organization" data-ng-model="vm.organization" name="Organization" placeholder="" class="form-control">
+                    </div>
+                </div>
+
+                <div class="control-group col-md-6">
+                    <label class="control-label" for="room">Select Room</label>
+                    <div class="controls">
+                        <select class="form-control" data-ng-options="item._id as item.name for item in vm.rooms" data-ng-model="vm.selectRooms">
+                            <option value="">Select</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="control-group col-md-6">
+                    <label class="control-label" for="date">Date</label>
+                    <div class="controls">
+                        <input type="text" placeholder="Select the Date *" class="form-control" id="pickdate" datetime-picker data-ng-model="vm.bookingdate" required />
+                    </div>
+                </div>
+
+                <div class="control-group col-md-6">
+                    <label class="control-label" for="timings">Slots</label>
+                    <div class="controls">
+                        <div isteven-multi-select
+                             input-model="vm.timeSlots"
+                             output-model="vm.selectedSlots"
+                             button-label="from fromm sepeator to tom"
+                             item-label="from fromm seperator to tom"
+                             tick-property="ticked"
+                             disable-property="disable">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="control-group col-md-6">
+                    <label class="control-label" for="products">Products</label>
+                    <div class="controls">
+                        <div isteven-multi-select
+                             input-model="vm.productLists"
+                             output-model="vm.selectedProducts"
+                             button-label="name price"
+                             item-label="name price"
+                             tick-property="ticked"
+                             group-property="msGroup">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="control-group col-md-6">
+                    <label class="control-label" for="persons">No. of Persons</label>
+                    <div class="controls">
+                        <input type="text" class="form-control" allowonlynumbers maxlength="2" data-ng-model="vm.persons" />
+                    </div>
+                </div>
+
+                <div class="control-group col-md-12">
+                    <div class="controls">
+                        <button class="btn btn-success" data-ng-click="vm.bookRoom(bookroom.$invalid)" data-ng-disabled="bookroom.$invalid">Book a room</button>
+                    </div>
+                </div>
+            </fieldset>
+        </form>
+    </div>
+</div>
+
+
+<div class="container">
+    <h2>Bookings</h2>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="table-responsive">
+                <div class="gridStyle" ui-grid="vm.bookingGridOptions"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid footer-wrap">
+    All Rights Reserved &copy; 2016 | Whiteboard Cafe
+</div>
